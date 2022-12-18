@@ -1,13 +1,19 @@
 import {
   Column,
   CreateDateColumn,
-  Entity,
   PrimaryGeneratedColumn,
+  Entity,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
-export class UsersModel {
+interface UserCreationAttrs {
+  name: string;
+  email: string;
+  password: string;
+}
+
+@Entity({ name: 'users' })
+export class UsersEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
