@@ -1,8 +1,7 @@
 version: '3.8'
-
 services:
-  db:
-    container_name: nest_postgres
+  dabase:
+    container_name: nest_postgres_db
     image: postgres:14.5-alpine
     restart: always
     environment:
@@ -10,26 +9,25 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=nest_authorization
     ports:
-      - '5080:5432'
+      - '5436:5432'
     volumes:
       - postgres_volume:/var/lib/postgresql/data
-  api:
-    depends_on:
-      - db
-    build:
-      dockerfile: Dockerfile
-      context: .
-      # Only will build development stage from our dockerfile
-      target: development
-    volumes:
-      - .:/usr/src/app
-    env_file:
-      - .env
-    # Run a command against the development stage of the image
-    command: npm run start:dev
-    ports:
-      - 5000:5000
+#  api:
+#    depends_on:
+#      - dabase
+#    build:
+#      dockerfile: Dockerfile
+#      context: .
+#      # Only will build development stage from our dockerfile
+#      target: development
+#    volumes:
+#      - .:/usr/src/app
+#    env_file:
+#      - .env
+#    # Run a command against the development stage of the image
+#    command: npm run start:dev
+#    ports:
+#      - 5000:5000
 volumes:
   postgres_volume:
-
 
