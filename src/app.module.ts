@@ -23,7 +23,7 @@ import { UsersModule } from './users/users.module';
         username: config.get<string>('TYPEORM_USERNAME'),
         password: config.get<string>('TYPEORM_PASSWORD'),
         database: config.get<string>('TYPEORM_DB'),
-        entities: [__dirname + 'dist/**/**/*.entity{.ts,.js}'],
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
       }),
     }),
