@@ -17,6 +17,7 @@ export class UsersModel {
   name: string;
 
   @Column({
+    unique: true,
     length: 100,
   })
   email: string;
