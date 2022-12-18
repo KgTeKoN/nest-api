@@ -13,6 +13,23 @@ services:
       - '5080:5432'
     volumes:
       - postgres_volume:/var/lib/postgresql/data
+  api:
+    depends_on:
+      - db
+    build:
+      dockerfile: Dockerfile
+      context: .
+      # Only will build development stage from our dockerfile
+      target: development
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+    # Run a command against the development stage of the image
+    command: npm run start:dev
+    ports:
+      - 5000:5000
 volumes:
   postgres_volume:
+
 
