@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-interface UserCreationAttrs {
+export interface UserCreationAttrs {
   name: string;
   email: string;
   password: string;
