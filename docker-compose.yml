@@ -9,25 +9,19 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=nest_authorization
     ports:
-      - '5436:5432'
+      - '5432:5432'
     volumes:
       - postgres_volume:/var/lib/postgresql/data
-#  api:
-#    depends_on:
-#      - dabase
-#    build:
-#      dockerfile: Dockerfile
-#      context: .
-#      # Only will build development stage from our dockerfile
-#      target: development
-#    volumes:
-#      - .:/usr/src/app
-#    env_file:
-#      - .env
-#    # Run a command against the development stage of the image
-#    command: npm run start:dev
-#    ports:
-#      - 5000:5000
+  api:
+    build: .
+    env_file: ./.env
+    command: npm run start:dev
+    depends_on:
+      - dabase
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/usr/src/ap
 volumes:
   postgres_volume:
 
