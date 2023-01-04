@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
+import { RamController } from './ram/ram.controller';
+import { RamService } from './ram/ram.service';
+import { RamModule } from './ram/ram.module';
 
 @Module({
   controllers: [],
@@ -28,6 +31,7 @@ import { UsersModule } from './users/users.module';
       }),
     }),
     UsersModule,
+    RamModule,
   ],
 })
 export class AppModule {}
